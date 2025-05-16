@@ -14,6 +14,7 @@ export default async function handler(request, response) {
         return;
       }
       return;
+
     default:
       response.status(405).json({ status: "Wrong request method" });
       return;
