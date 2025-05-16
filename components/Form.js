@@ -41,7 +41,7 @@ export default function Form({ onSubmit, formName, defaultData }) {
         type="text"
         defaultValue={defaultData?.name}
       />
-      <Label htmlFor="image-url">Image Url</Label>
+      <Label htmlFor="image-url">Image Url from Unsplash</Label>
       <Input
         id="image-url"
         name="image"
