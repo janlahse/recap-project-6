@@ -15,6 +15,12 @@ export default async function handler(request, response) {
       }
       return;
 
+    case "PUT":
+      const updatedPlace = request.body;
+      await Place.findByIdAndUpdate(id, updatedPlace);
+      response.status(200).json({ status: "Place updated" });
+      return;
+
     default:
       response.status(405).json({ status: "Wrong request method" });
       return;
