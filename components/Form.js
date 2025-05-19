@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { StyledButton } from "./StyledButton";
+import { StyledButton } from "@/components/StyledButton";
 
 export const FormContainer = styled.form`
   display: grid;
@@ -24,7 +24,7 @@ export const Label = styled.label`
   font-weight: bold;
 `;
 
-export default function Form({ onSubmit, formName, defaultData }) {
+export default function Form({ onSubmit, formName, defaultData, isLoading }) {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -40,6 +40,7 @@ export default function Form({ onSubmit, formName, defaultData }) {
         name="name"
         type="text"
         defaultValue={defaultData?.name}
+        disabled={isLoading}
       />
       <Label htmlFor="image-url">Image Url from Unsplash</Label>
       <Input
@@ -47,6 +48,7 @@ export default function Form({ onSubmit, formName, defaultData }) {
         name="image"
         type="text"
         defaultValue={defaultData?.image}
+        disabled={isLoading}
       />
       <Label htmlFor="location">Location</Label>
       <Input
@@ -54,6 +56,7 @@ export default function Form({ onSubmit, formName, defaultData }) {
         name="location"
         type="text"
         defaultValue={defaultData?.location}
+        disabled={isLoading}
       />
       <Label htmlFor="map-url">Map Url</Label>
       <Input
@@ -61,6 +64,7 @@ export default function Form({ onSubmit, formName, defaultData }) {
         name="mapURL"
         type="text"
         defaultValue={defaultData?.mapURL}
+        disabled={isLoading}
       />
       <Label htmlFor="description">Description</Label>
       <Textarea
@@ -69,9 +73,10 @@ export default function Form({ onSubmit, formName, defaultData }) {
         cols="30"
         rows="10"
         defaultValue={defaultData?.description}
+        disabled={isLoading}
       ></Textarea>
-      <StyledButton type="submit">
-        {defaultData ? "Update place" : "Add place"}
+      <StyledButton type="submit" disabled={isLoading}>
+        {isLoading ? "Loading..." : "Add place"}
       </StyledButton>
     </FormContainer>
   );
